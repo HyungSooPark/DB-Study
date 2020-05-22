@@ -320,34 +320,6 @@ SELECT * FROM MEMEBER;
 
 COMMIT;
 
--- MEMBER 테이블을 생성하여
--- 사용자 정보를 받을 수 있는 테이블 객체를 만들되,
--- 회원 번호는 NUMBER 형태로 기본키 설정하고,
--- 회원 아이디는 중복 불가에 필수 입력 사항으로,
--- 회원 비밀번호는 필수 입력 사항,
--- 회원 이름, 성별('M','F'),
--- 회원 연락처, 회원 생년월일 정보를
--- 받을 수 있는 컬럼을 가진 테이블을 생성하시오.
--- 단, 각 컬럼의 길이는 직접 판단하고,
--- 위에 생성된 테이블 기준으로
--- 회원 정보를 최소 5개 이상 삽입하여 확인하시오.
 
-CREATE TABLE MEMBER(
-	USER_NO NUMBER PRIMARY KEY,
-	USER_ID VARCHAR2(20) NOT NULL UNIQUE,
-	USER_PWD VARCHAR2(30) NOT NULL,
-	USER_NAME VARCHAR2(15),
-	GENDER CHAR(3) CHECK(GENDER IN('M','F')),
-	PHONE VARCHAR2(14),
-	BIRTHDAY DATE
-);
-INSERT INTO MEMBER
-VALUES(1,'USER01','PASS01','박형수','M','010-1234-5678',TO_DATE('94/12/01','RR/MM/DD'));
-
-INSERT INTO MEMBER
-VALUES(2,'USER02','PASS02','김형수','M','010-2222-2222',TO_DATE('97/10/22','RR/MM/DD'));
-
-
-SELECT * FROM MEMBER;
 
 
