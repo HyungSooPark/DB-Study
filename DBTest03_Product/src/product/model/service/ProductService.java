@@ -20,25 +20,28 @@ public class ProductService {
 		return res;
 	}
 
-	public void insert(Product p) {
+	public int insert(Product p) {
 		ProductDao dao = new ProductDao();
 		Connection con = getConnection();
-		dao.insert(con, p);
+		int res = dao.insert(con, p);
 		close(con);
+		return res;
 	}
 
-	public void delete(String id) {
+	public int delete(String id) {
 		ProductDao dao = new ProductDao();
 		Connection con = getConnection();
-		dao.delete(con,id);
+		int res = dao.delete(con,id);
 		close(con);
+		return res;
 	}
 
-	public void update(Product p) {
+	public int update(Product p) {
 		ProductDao dao = new ProductDao();
 		Connection con = getConnection();
-		dao.update(con,p);
+		int res = dao.update(con,p);
 		close(con);
+		return res;
 	}
 
 	public Product selectOne(String id) {

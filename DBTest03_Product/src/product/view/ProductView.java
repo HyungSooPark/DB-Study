@@ -58,7 +58,13 @@ public class ProductView {
 				sc.nextLine();
 				System.out.print("Desc: ");
 				p.setDesc(sc.nextLine());
-				pc.insert(p);
+				int insert_res = pc.insert(p);
+				if(insert_res>0) {
+					System.out.println("추가 성공");
+				}
+				else {
+					System.out.println("추가 실패");
+				}
 				System.out.println();
 				break;
 			case 4:
@@ -73,13 +79,25 @@ public class ProductView {
 				sc.nextLine();
 				System.out.print("Desc: ");
 				update_p.setDesc(sc.nextLine());
-				pc.update(update_p);
+				int res_update = pc.update(update_p);
+				if(res_update>0) {
+					System.out.println("수정 성공");
+				}
+				else {
+					System.out.println("수정 실패");
+				}
 				System.out.println();
 				break;
 			case 5:
 				System.out.print("삭제할 ID: ");
 				String delete_id = sc.next();
-				pc.delete(delete_id);
+				int del_res = pc.delete(delete_id);
+				if(del_res>0) {
+					System.out.println("삭제 성공");
+				}
+				else {
+					System.out.println("삭제 실패");
+				}
 				System.out.println();
 				break;
 			case 6:

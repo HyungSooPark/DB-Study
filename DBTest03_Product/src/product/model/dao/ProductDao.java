@@ -60,7 +60,7 @@ public class ProductDao {
 		return list;
 	}
 
-	public void insert(Connection con, Product p) {
+	public int insert(Connection con, Product p) {
 		PreparedStatement pstm = null;
 		int res = 0;
 		String sql = prop.getProperty("insert");
@@ -74,20 +74,20 @@ public class ProductDao {
 			res = pstm.executeUpdate();
 			
 			if(res>0) {
-				System.out.println("추가 성공");
 				commit(con);
 			}
 			else {
-				System.out.println("추가 실패");
+				rollback(con);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstm);
 		}
+		return res;
 	}
 
-	public void delete(Connection con, String id) {
+	public int delete(Connection con, String id) {
 		PreparedStatement pstm = null;
 		int res = 0;
 		String sql = prop.getProperty("delete");
@@ -98,20 +98,20 @@ public class ProductDao {
 			res = pstm.executeUpdate();
 			
 			if(res>0) {
-				System.out.println("삭제 성공");
 				commit(con);
 			}
 			else {
-				System.out.println("삭제 실패");
+				rollback(con);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstm);
 		}
+		return res;
 	}
 
-	public void update(Connection con, Product p) {
+	public int update(Connection con, Product p) {
 		PreparedStatement pstm = null;
 		int res = 0;
 		String sql = prop.getProperty("update");
@@ -126,17 +126,17 @@ public class ProductDao {
 			res = pstm.executeUpdate();
 			
 			if(res>0) {
-				System.out.println("수정 성공");
 				commit(con);
 			}
 			else {
-				System.out.println("수정 실패");
+				rollback(con);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstm);
 		}
+		return res;
 	}
 
 	public Product selectOne(Connection con,String id) {

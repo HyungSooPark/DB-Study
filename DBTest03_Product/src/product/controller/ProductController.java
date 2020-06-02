@@ -12,16 +12,16 @@ public class ProductController {
 		return ps.selectAll();
 	}
 
-	public void insert(Product p) {
-		ps.insert(p);
+	public int insert(Product p) {
+		return ps.insert(p);
 	}
 
-	public void delete(String id) {
-		ps.delete(id);
+	public int delete(String id) {
+		return ps.delete(id);
 	}
 
-	public void update(Product p) {
-		ps.update(p);
+	public int update(Product p) {
+		return ps.update(p);
 	}
 
 	public Product selectOne(String id) {
