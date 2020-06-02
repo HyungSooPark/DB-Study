@@ -49,7 +49,7 @@ public class MemberDaoImpl implements MemberDao {
 	public Member selectOne(Connection con, int no) {
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
-		Member resOne = null;
+		Member resOne = new Member();
 
 		try {
 			pstm = con.prepareStatement(selectOne);
@@ -109,7 +109,7 @@ public class MemberDaoImpl implements MemberDao {
 		int res = 0;
 		
 		try {
-			pstm = con.prepareStatement(selectOne);
+			pstm = con.prepareStatement(delete);
 			pstm.setInt(1, no);
 			res = pstm.executeUpdate();
 			

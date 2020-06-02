@@ -96,7 +96,7 @@ public class MemberView {
 				
 				Member m2 = new Member(u_no,u_name,u_age,u_gender,u_location,u_job,u_tell,u_email);
 				
-				int updateRes = memberBiz.insert(m2);
+				int updateRes = memberBiz.update(m2);
 				
 				if(updateRes>0) {
 					System.out.println("update 성공");
@@ -121,6 +121,9 @@ public class MemberView {
 				System.out.println();
 				break;
 			case 6:
+				System.out.println("종료합니다.");
+				sc.close();
+				break;
 			default:
 				System.out.println("--- wrong input ---\n");
 				break;
